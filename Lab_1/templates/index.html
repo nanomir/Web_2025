@@ -1,0 +1,62 @@
+{% macro table(headers, rows) %}
+    <table>
+      <thead>
+        <tr>
+          {% for item in headers %}
+            <th>{{ item }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in rows %}
+          <tr>
+            {% for item in row %}
+              <td>{{ item }}</td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endmacro %}
+
+<!DOCTYPE HTML>
+<html>
+  <div>
+    <a href="#build-table">Список зданий</a>
+    <a href="#build-type-table">Типы зданий</a>
+    <a href="#build-country-table">Список стран</a>
+    <a href="#build-year-table">Список по годам</a>
+    <a href="#build-year-between">Список по годам между</a>
+  </div>
+  <head>
+    <title>Самые высокие здания и сооружения</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div id="build-table">
+      <h3>Список зданий</h3>
+      {{ table(buildings_head, buildings_body) }}
+      <button onclick="window.location.href='#'" >Назад</button>
+    </div>
+    <div id="build-type-table">
+      <h3>Тип заданий</h3>
+      {{ table(build_type_head, build_type_body) }}
+      <button onclick="window.location.href='#'" >Назад</button>
+    </div>
+    <div id="build-country-table">
+      <h3>Страна заданий</h3>
+      {{ table(build_country_head, build_country_body) }}
+      <button onclick="window.location.href='#'" >Назад</button>
+    </div>
+    <div id="build-year-table">
+      <h3>Год заданий</h3>
+      {{ table(build_year_head, build_year_body) }}
+      <button onclick="window.location.href='#'" >Назад</button>
+    </div>
+    <div id="build-year-between">
+      <h3>Заданий с {{start_date}} до {{end_date}}</h3>
+      {{ table(build_year_bet_head, build_year_bet_body) }}
+      <button onclick="window.location.href='#'" >Назад</button>
+    </div>
+  </body>
+</html>   
